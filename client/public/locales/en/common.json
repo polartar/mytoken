@@ -1,0 +1,13 @@
+{
+  "next": "Next",
+  "back": "Back",
+  "submit": "Submit",
+  "review": "Review",
+  "checkout": "Checkout",
+  "backToHome": "Back To Home",
+  "important": "Important",
+  "yesNoOptions": {
+    "Yes": "Yes",
+    "No": "No"
+  }
+}

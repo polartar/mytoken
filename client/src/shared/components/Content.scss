@@ -1,0 +1,16 @@
+.carousel {
+  .carousel-inner {
+    height: 50vh;
+    min-height: 600px;
+    background-image: url('/assets/carousel-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .carousel-item {
+      height: 100%;
+      .title {
+        margin: 200px 0;
+      }
+    }
+  }
+}

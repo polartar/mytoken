@@ -1,0 +1,130 @@
+{
+  "defaultTitle": "Let's tokenize your asset",
+  "nameStep": {
+    "stepDescription": "Please enter your personal information. This information is important for our token registration process.",
+    "firstName": {
+      "label": "First Name",
+      "placeholder": "John"
+    },
+    "lastName": {
+      "label": "Last Name",
+      "placeholder": "Doe"
+    },
+    "ownerCompany": {
+      "label": "Registered Company Name",
+      "placeholder": "Your Company"
+    }
+  },
+  "contactStep": {
+    "stepDescription": "Please share your contact information. We will use this information to get in touch with you with further information with your token.",
+    "email": {
+      "label": "Email",
+      "placeholder": "name@domain.com"
+    },
+    "companyPhone": {
+      "label": "Phone",
+      "placeholder": "+1 222 333 4444"
+    },
+    "website": {
+      "label": "Web Site",
+      "placeholder": "www.domain.com"
+    }
+  },
+  "tokenStep": {
+    "stepDescription": "Now you can create your token, let's define the name, the symbol and related information.",
+    "symbol": {
+      "label": "Token Symbol",
+      "placeholder": "TOK"
+    },
+    "supply": {
+      "label": "Token Supply",
+      "placeholder": "1000000"
+    },
+    "title": {
+      "label": "Token Name",
+      "placeholder": "My Token"
+    },
+    "assetInfo": {
+      "label": "Token Description",
+      "placeholder": "A Useful Token"
+    }
+  },
+  "assetStep": {
+    "stepDescription": "Describe the asset you are tokenizing. The more information, the easier it is for investors.",
+    "assetType": {
+      "label": "Type of Asset",
+      "options": {
+        "Real Estate": "Real Estate",
+        "VC": "Venture Capital",
+        "PE": "Private Equity",
+        "Commodities": "Commodities",
+        "Metals": "Metals",
+        "Stock": "Stock",
+        "Bond": "Bond",
+        "Utility": "Utility",
+        "Other": "Other"
+      }
+    },
+    "otherAsset": {
+      "label": "Other Asset",
+      "placeholder": "Other type of Asset"
+    },
+    "assetId": {
+      "label": "Asset Id (if any)",
+      "placeholder": "TOK11223344"
+    },
+    "divisible": {
+      "label": "Divisible"
+    },
+    "hodlersLimit": {
+      "label": "Limit the Number of Holders"
+    },
+    "limitNumber": {
+      "label": "Limit Number",
+      "placeholder": "1000000"
+    }
+  },
+  "ownerStep": {
+    "stepDescription": "Enter the Ethereum Wallet Address to which the tokens will be sent to.",
+    "stepAlert": "Make sure that the address is correct, once the created tokens are sent, it cannot be undone.",
+    "ownerETHAddress": {
+      "label": "Asset Owner's ETH address",
+      "placeholder": "0x3223223232323232323232323"
+    },
+    "tokenDisplay": {
+      "anyone": "Anyone",
+      "restricted": "Restricted",
+      "whitelist": "Whitelisted Investors by Asset Owner",
+      "allAccredited": "All Tokenizer nominated accredited investors",
+      "restrictedRequired": "If required is selected, one of the option must be checked at least"
+    }
+  },
+  "reviewStep": {
+    "tokenDisplayLabel": "Who can Own the Tokens",
+    "stepTitle": "Review before Submitting",
+    "personalInformation": "Personal Information",
+    "tokenDetails": "Token Details",
+    "assetOwner": "Asset & Owner",
+    "legend": "By Submitting this form, you agree to our Terms and Conditions",
+    "comments": "Any comments or messages?"
+  },
+  "checkoutStep": {
+    "stepTitle": "Checkout",
+    "payWithCoinPayments": "Pay With CoinPayments",
+    "stepDescription": "Please select your preferred payment method and follow the instructions.",
+    "applyDiscount": "Apply Discount",
+    "promoCode": {
+      "label": "Promo Code",
+      "placeholder": "1A345C",
+      "invalid": "Invalid Code, please try again",
+      "serverError": "Connection error, please try again"
+    }
+  },
+  "coinPaymentStep": {
+    "stepTitle": "Continue on your wallet",
+    "stepDescription": "An email was sent with this information, please proceed to transfer the tokens to the wallet and you will receive a confirmation email once Tokens are created.",
+    "priceLabel": "Price",
+    "tokensLabel": "Tokens",
+    "addressLabel": "Payment Address"
+  }
+}

@@ -1,0 +1,18 @@
+.checkout-field-container {
+  border: 1px solid #222;
+  padding: 4px 10px;
+  color: #47525E;
+  text-align: left;
+  line-height: normal;
+  margin: 10px 0;
+  width: 100%;
+
+  .label {
+    text-transform: uppercase;
+    font-size: 1em;
+  }
+
+  .value {
+    font-size: 1.8em;
+  }
+}

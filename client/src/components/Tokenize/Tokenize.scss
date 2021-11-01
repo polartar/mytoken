@@ -1,0 +1,61 @@
+.container {
+  position: relative;
+  max-width: 600px;
+  padding: 50px 0;
+  & > h1 {
+    padding: 0 50px;
+  }
+  &.wider {
+    max-width: unset;
+    padding: 50px;
+    
+    @media (min-width: 992px) {
+      padding: 50px 100px;
+    }
+
+    button.dismiss {
+      right: 50px;
+      @media (min-width: 992px) {
+        right: 100px;
+      }
+    }
+  }
+
+  .step-description {
+    margin: 15px 0 30px 0;
+    font-size: 1.3em;
+    text-align: justify;
+  }
+
+  form {
+    text-align: left;
+    margin-bottom: 20px;
+
+    label.form-label {
+      padding-left: 10px;
+      font-size: 1.3em;
+    }
+  }
+
+  .row.actions {
+    justify-content: flex-end;
+    padding: 0 15px;
+
+    button.btn {
+      min-width: 120px;
+      margin-left: 10px;
+    }
+  }
+
+  button.dismiss {
+    position: absolute;
+    outline: none;
+    top: 52px;
+    right: 0;
+    font-size: 2em;
+    text-decoration: none;
+    color: black;
+    padding: 0;
+    margin: 0;
+  }
+}
