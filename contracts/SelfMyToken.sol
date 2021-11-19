@@ -48,7 +48,7 @@ contract SelfMyTokenStorage {
         bool holderLimit; // Is there a limit to the number of addresses allowed to hold the token
         uint256 maxHolders; // Maximum number of holders allowed (optional)
         //      bool restrictedHolders; // Can anyone hold the tokens or is it restricted to verified investors
-        bool tokenizerVerificationList; // Should the token use MyTokenr's verification list or the owners'
+        bool mytokenVerificationList; // Should the token use MyTokenr's verification list or the owners'
         bool ownerVerificationList; // Is the owner using their own verification list
         string tokenURI; //A URI that has the metadata of the token
     }
@@ -92,7 +92,7 @@ contract SelfMyToken is
         bool _holderLimit,
         uint256 _maxHolders,
         //    bool _restrictedHolders,
-        bool _tokenizerVerificationList,
+        bool _mytokenVerificationList,
         bool _ownerVerificationList,
         string memory _tokenURI
     ) public payable returns (bool) {
@@ -110,7 +110,7 @@ contract SelfMyToken is
             _holderLimit,
             _maxHolders,
             //          _restrictedHolders,
-            _tokenizerVerificationList,
+            _mytokenVerificationList,
             _ownerVerificationList,
             _tokenURI
         );
@@ -124,13 +124,13 @@ contract SelfMyToken is
             token.owner,
             token.supply,
             token.tokenURI,
-            token.tokenizerVerificationList,
+            token.mytokenVerificationList,
             verificationListAddress,
             token.ownerVerificationList,
             contractOwner
         );
-        //If they want to use tokenizer verification list then whitleist the owner
-        if (token.tokenizerVerificationList == true)
+        //If they want to use mytoken verification list then whitleist the owner
+        if (token.mytokenVerificationList == true)
             IVerificationList(verificationListAddress).addWhiteList(
                 token.owner
             );
@@ -210,7 +210,7 @@ contract SelfMyToken is
           token.symbol,
           token.supply,
           token.owner,
-          token.tokenizerVerificationList,
+          token.mytokenVerificationList,
           token.ownerVerificationList,
           token.tokenURI
         );

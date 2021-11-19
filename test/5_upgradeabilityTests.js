@@ -13,7 +13,7 @@ contract("upgreadable scheme", function (accounts) {
     //the first version
     //The unique verification List
     verificationList = await VerificatioList.new();
-    //The upgradeable tokenizer
+    //The upgradeable mytoken
     let tempMyToken = await MyToken.new();
     this.selfTokenizerRegistry = await MyTokenRegistry.new();
 
@@ -44,7 +44,7 @@ contract("upgreadable scheme", function (accounts) {
     const holdersLimit = true;
     const maxHolders = 100;
     //  const restrictedHolders = true;
-    const tokenizerVerificationList = true;
+    const mytokenVerificationList = true;
     const ownerVerificationList = false;
 
     const tokenURI = "QmPXME1oRtoT627YKaDPDQ3PwA8tdP9rWuAAweLzqSwAWT";
@@ -66,7 +66,7 @@ contract("upgreadable scheme", function (accounts) {
       assetId,
       holdersLimit,
       maxHolders,
-      tokenizerVerificationList,
+      mytokenVerificationList,
       ownerVerificationList,
       tokenURI,
       { from: admin, gas: 4700000 }

@@ -26,7 +26,7 @@ contract("SelfTokenizer", function (accounts) {
   const holdersLimit = true;
   const maxHolders = 100;
   //  const restrictedHolders = true;
-  const tokenizerVerificationList = true;
+  const mytokenVerificationList = true;
   const ownerVerificationList = false;
 
   const tokenURI = "QmPXME1oRtoT627YKaDPDQ3PwA8tdP9rWuAAweLzqSwAWT";
@@ -42,7 +42,7 @@ contract("SelfTokenizer", function (accounts) {
   beforeEach(async function () {
     //The unique verification List
     verificationList = await VerificatioList.new();
-    //The upgradeable tokenizer
+    //The upgradeable mytoken
     let tempSelfTokenizer = await SelfTokenizer.new();
     this.selfTokenizerRegistry = await SelfTokenizerRegistry.new();
 
@@ -71,7 +71,7 @@ contract("SelfTokenizer", function (accounts) {
       holdersLimit,
       maxHolders,
       //    restrictedHolders,
-      tokenizerVerificationList,
+      mytokenVerificationList,
       ownerVerificationList,
       tokenURI,
       { from: admin, gas: 4700000 }
@@ -97,7 +97,7 @@ contract("SelfTokenizer", function (accounts) {
       holdersLimit,
       maxHolders,
       //restrictedHolders,
-      tokenizerVerificationList,
+      mytokenVerificationList,
       ownerVerificationList,
       tokenURI,
       { from: admin, gas: 4700000 }
@@ -117,7 +117,7 @@ contract("SelfTokenizer", function (accounts) {
       true,
       "Token not created correctly!"
     );
-    if (tokenizerVerificationList)
+    if (mytokenVerificationList)
       assert.equal(
         await verificationList.isWhiteListed(client),
         true,
@@ -138,7 +138,7 @@ contract("SelfTokenizer", function (accounts) {
         holdersLimit,
         maxHolders,
         //  restrictedHolders,
-        tokenizerVerificationList,
+        mytokenVerificationList,
         ownerVerificationList,
         tokenURI,
         { from: admin, gas: 4700000 }
@@ -164,7 +164,7 @@ contract("SelfTokenizer", function (accounts) {
       holdersLimit,
       maxHolders,
       //  restrictedHolders,
-      tokenizerVerificationList,
+      mytokenVerificationList,
       ownerVerificationList,
       tokenURI,
       { from: admin, gas: 4700000 }

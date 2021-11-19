@@ -25,7 +25,7 @@ contract('tokenize', (accounts) => {
   const decimal = 18;
   const tokenURI = "QmPXME1oRtoT627YKaDPDQ3PwA8tdP9rWuAAweLzqSwAWT";
 
-  const tokenizerVerificationList = true;
+  const mytokenVerificationList = true;
   const ownerVerificationList = true;
 
   const basisPointsRate = 2;
@@ -40,7 +40,7 @@ contract('tokenize', (accounts) => {
       client,
       tokenSupply,
       tokenURI,
-      tokenizerVerificationList,
+      mytokenVerificationList,
       verificationList.address,
       ownerVerificationList,
       contractOwner

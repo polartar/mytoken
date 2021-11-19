@@ -367,7 +367,7 @@ contract MyToken is StandardToken, OwnerVerList {
     string public name;
     string public symbol;
     uint256 public decimals;
-    IVerificationList tokenizerList;
+    IVerificationList mytokenList;
 
     //  The contract can be initialized with a number of tokens
     //  All the tokens are deposited to the owner address
@@ -377,7 +377,7 @@ contract MyToken is StandardToken, OwnerVerList {
     // @param _symbol Token symbol
     // @param _decimals Token decimals
     string public tokenURI;
-    bool tokenizerVerificationList;
+    bool mytokenVerificationList;
     bool ownerVerificationList;
 
     // Constructor
@@ -388,8 +388,8 @@ contract MyToken is StandardToken, OwnerVerList {
         address _owner,
         uint256 _supply,
         string memory _tokenURI,
-        bool _tokenizerVerificationList,
-        address _tokenizerListAddress,
+        bool _mytokenVerificationList,
+        address _mytokenListAddress,
         bool _ownerVerificationList,
         address _contractOwner
     ) public OwnerVerList(_owner) {
@@ -401,8 +401,8 @@ contract MyToken is StandardToken, OwnerVerList {
         decimals = _decimals;
         balances[_owner] = _totalSupply;
         tokenURI = _tokenURI;
-        tokenizerVerificationList = _tokenizerVerificationList;
-        tokenizerList = IVerificationList(_tokenizerListAddress);
+        mytokenVerificationList = _mytokenVerificationList;
+        mytokenList = IVerificationList(_mytokenListAddress);
         ownerVerificationList = _ownerVerificationList;
 
         emit Transfer(address(0), _owner, _totalSupply);
@@ -410,16 +410,16 @@ contract MyToken is StandardToken, OwnerVerList {
 
     function transfer(address _to, uint256 _value) public whenNotPaused {
         if (
-            tokenizerVerificationList == true && ownerVerificationList == true
+            mytokenVerificationList == true && ownerVerificationList == true
         ) {
             // TOKENIZER Check
             require(
-                !tokenizerList.isBlackListed(msg.sender) &&
-                    !tokenizerList.isBlackListed(_to)
+                !mytokenList.isBlackListed(msg.sender) &&
+                    !mytokenList.isBlackListed(_to)
             );
             require(
-                tokenizerList.isWhiteListed(msg.sender) &&
-                    tokenizerList.isWhiteListed(_to)
+                mytokenList.isWhiteListed(msg.sender) &&
+                    mytokenList.isWhiteListed(_to)
             );
 
             // OWNER Check
@@ -427,15 +427,15 @@ contract MyToken is StandardToken, OwnerVerList {
             require(ownerWhiteList[msg.sender] && ownerWhiteList[_to]);
 
             return super.transfer(_to, _value);
-        } else if (tokenizerVerificationList == true) {
+        } else if (mytokenVerificationList == true) {
             // TOKENIZER Check
             require(
-                !tokenizerList.isBlackListed(msg.sender) &&
-                    !tokenizerList.isBlackListed(_to)
+                !mytokenList.isBlackListed(msg.sender) &&
+                    !mytokenList.isBlackListed(_to)
             );
             require(
-                tokenizerList.isWhiteListed(msg.sender) &&
-                    tokenizerList.isWhiteListed(_to)
+                mytokenList.isWhiteListed(msg.sender) &&
+                    mytokenList.isWhiteListed(_to)
             );
 
             return super.transfer(_to, _value);
@@ -456,16 +456,16 @@ contract MyToken is StandardToken, OwnerVerList {
         uint256 _value
     ) public whenNotPaused {
         if (
-            tokenizerVerificationList == true && ownerVerificationList == true
+            mytokenVerificationList == true && ownerVerificationList == true
         ) {
             // TOKENIZER CHECK
             require(
-                !tokenizerList.isBlackListed(msg.sender) &&
-                    !tokenizerList.isBlackListed(_to)
+                !mytokenList.isBlackListed(msg.sender) &&
+                    !mytokenList.isBlackListed(_to)
             );
             require(
-                tokenizerList.isWhiteListed(msg.sender) &&
-                    tokenizerList.isWhiteListed(_to)
+                mytokenList.isWhiteListed(msg.sender) &&
+                    mytokenList.isWhiteListed(_to)
             );
 
             // OWNER Check
@@ -473,15 +473,15 @@ contract MyToken is StandardToken, OwnerVerList {
             require(ownerWhiteList[msg.sender] && ownerWhiteList[_to]);
 
             return super.transferFrom(_from, _to, _value);
-        } else if (tokenizerVerificationList == true) {
+        } else if (mytokenVerificationList == true) {
             // TOKENIZER CHECK
             require(
-                !tokenizerList.isBlackListed(msg.sender) &&
-                    !tokenizerList.isBlackListed(_to)
+                !mytokenList.isBlackListed(msg.sender) &&
+                    !mytokenList.isBlackListed(_to)
             );
             require(
-                tokenizerList.isWhiteListed(msg.sender) &&
-                    tokenizerList.isWhiteListed(_to)
+                mytokenList.isWhiteListed(msg.sender) &&
+                    mytokenList.isWhiteListed(_to)
             );
 
             return super.transferFrom(_from, _to, _value);

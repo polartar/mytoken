@@ -23,7 +23,7 @@ contract("ERC20 functionality works", function (accounts) {
   const decimal = 18;
   const tokenURI = "QmPXME1oRtoT627YKaDPDQ3PwA8tdP9rWuAAweLzqSwAWT";
 
-  const tokenizerVerificationList = false;
+  const mytokenVerificationList = false;
   const ownerVerificationList = false;
 
   const feesPercentage = new BN(2);
@@ -36,7 +36,7 @@ contract("ERC20 functionality works", function (accounts) {
       initialHolder,
       initialSupply,
       tokenURI,
-      tokenizerVerificationList,
+      mytokenVerificationList,
       dummyVerificationList,
       ownerVerificationList,
       contractOwner

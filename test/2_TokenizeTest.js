@@ -21,7 +21,7 @@ contract("tokenize", function (accounts) {
   const decimal = 18;
   const tokenURI = "QmPXME1oRtoT627YKaDPDQ3PwA8tdP9rWuAAweLzqSwAWT";
 
-  const tokenizerVerificationList = true;
+  const mytokenVerificationList = true;
   const ownerVerificationList = true;
 
   var basisPointsRate = 2;
@@ -36,7 +36,7 @@ contract("tokenize", function (accounts) {
       client,
       tokenSupply,
       tokenURI,
-      tokenizerVerificationList,
+      mytokenVerificationList,
       verificationList.address,
       ownerVerificationList,
       contractOwner
@@ -52,7 +52,7 @@ contract("tokenize", function (accounts) {
       "Supply Not Correct! Token not transferred to client"
     );
   });
-  //These are test when token has chose to use the tokenizerVerification list
+  //These are test when token has chose to use the mytokenVerification list
 
   it("Checking Transfer with Both VerificationList", async function () {
     const status = await verificationList.isWhiteListed(user2);
