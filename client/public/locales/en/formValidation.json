@@ -1,9 +1,0 @@
-{
-  "required": "$fieldName is a required field.",
-  "minLength": "$fieldName must be at least $length character long.",
-  "maxLength": "$fieldName must be at most $length character long.",
-  "email": "$fieldName is not a valid email address.",
-  "numeric": "$fieldName must be a numeric value",
-  "ethAddress": "$fieldName must be a valid Ethereum Address",
-  "url": "$fieldName is not a valid URL."
-}

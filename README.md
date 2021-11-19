@@ -1,1 +1,1 @@
-Self Tokeninzation Platform 
+Self My Token

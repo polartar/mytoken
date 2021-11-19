@@ -1,5 +1,5 @@
 /**
- * @file MyToken.sol
+ * @file SelfMyToken.sol
  # @author sypeer
  *
  * contract to store and create erc20 tokens on payment
@@ -7,15 +7,15 @@
 
 pragma solidity >=0.5.0 <0.6.0;
 
-import "../Tokenize.sol";
-import "../Proxy/InitializableOwnable.sol";
-import "../Proxy/Upgradeable.sol";
+import "./MyToken.sol";
+import "./Proxy/InitializableOwnable.sol";
+import "./Proxy/Upgradeable.sol";
 
 interface InitializeInterface {
     function initialize(address _owner) external;
 }
 
-contract MyTokenStorage {
+contract SelfMyTokenStorage {
     using SafeMath for uint256;
 
     // State variables
@@ -48,29 +48,23 @@ contract MyTokenStorage {
         bool holderLimit; // Is there a limit to the number of addresses allowed to hold the token
         uint256 maxHolders; // Maximum number of holders allowed (optional)
         //      bool restrictedHolders; // Can anyone hold the tokens or is it restricted to verified investors
-        bool tokenizerVerificationList; // Should the token use Tokenizer's verification list or the owners'
+        bool tokenizerVerificationList; // Should the token use MyTokenr's verification list or the owners'
         bool ownerVerificationList; // Is the owner using their own verification list
         string tokenURI; //A URI that has the metadata of the token
     }
 }
 
-contract AddedStorage {
-    //Whatever variable you want to add
-    uint256 public newVariable;
-}
-
-contract UpdatedMyToken is
+contract SelfMyToken is
     Upgradeable,
     InitializableOwnable,
-    MyTokenStorage,
-    AddedStorage,
+    SelfMyTokenStorage,
     InitializeInterface
 {
     // initializes (works like a constructor)
     function initialize(address _owner) external {
         super.initialize();
         InitializableOwnable.initializeOwnable(_owner);
-        contractOwner = address(0xfCfA3389103E766aaC000CBBD2eF9dE387A42e8d);
+        contractOwner = address(0x55D9049d8b83F7CDE627AE6d8cAE9676692fAfe9);
         decimal = 18;
         tokenId = 0;
         creationFee = (1 ether) / 4;
@@ -85,11 +79,6 @@ contract UpdatedMyToken is
         address _owner,
         string tokenURI
     );
-
-    function aNewFunction() public {
-        //do something
-        newVariable = 100;
-    }
 
     // Methods
     function tokenizeAsset(
@@ -128,7 +117,7 @@ contract UpdatedMyToken is
         tokenDetails[token.tokenId] = token;
         //  contractOwner.transfer(msg.value);
 
-        Tokenize tokenized = new Tokenize(
+        MyToken tokenized = new MyToken(
             token.name,
             token.symbol,
             token.decimal,
@@ -173,6 +162,7 @@ contract UpdatedMyToken is
         return (true);
     }
 
+    // Update verification list contract address
     function updateVerificationListAddress(address _verificationListAddress)
         public
         onlyOwner
@@ -180,6 +170,7 @@ contract UpdatedMyToken is
         verificationListAddress = _verificationListAddress;
     }
 
+    // Return addresses of created token contracts by token owner address
     function getTokenAddresses(address _owner)
         public
         view
@@ -196,5 +187,51 @@ contract UpdatedMyToken is
         returns (address)
     {
         return (ownerTokens[_owner][_id]);
+    }
+
+    // Return stored Token Struct details for created token address
+    function getTokenDetails(address _tokenAddress)
+        public
+        view
+        onlyOwner
+        returns (
+          string memory,
+          string memory,
+          uint256,
+          address,
+          bool,
+          bool,
+          string memory
+        )
+    {
+        Token memory token = tokenContract[_tokenAddress];
+        return (
+          token.name,
+          token.symbol,
+          token.supply,
+          token.owner,
+          token.tokenizerVerificationList,
+          token.ownerVerificationList,
+          token.tokenURI
+        );
+    }
+
+    // Update IPFS URI on stored Token Struct
+    function updateIPFS(address _tokenAddress, string memory _updatedIpfsHash)
+        public
+        onlyOwner
+        returns (
+          string memory,
+          string memory
+        )
+    {
+        Token memory token = tokenContract[_tokenAddress];
+        string memory existingURI = token.tokenURI;
+        token.tokenURI = _updatedIpfsHash;
+        tokenContract[_tokenAddress] = token;
+        return (
+          existingURI,
+          token.tokenURI
+        );
     }
 }

@@ -1,7 +1,7 @@
 // Import artifacts
-const SelfTokenizer = artifacts.require("SelfTokenizer");
-const SelfTokenizerRegistry = artifacts.require("SelfTokenizerRegistry");
-const NewSelfTokenizer = artifacts.require("UpdatedSelfTokenizer");
+const MyToken = artifacts.require("MyToken");
+const MyTokenRegistry = artifacts.require("MyTokenRegistry");
+const NewMyToken = artifacts.require("UpdatedMyToken");
 const VerificatioList = artifacts.require("VerificationList");
 
 contract("upgreadable scheme", function (accounts) {
@@ -14,13 +14,13 @@ contract("upgreadable scheme", function (accounts) {
     //The unique verification List
     verificationList = await VerificatioList.new();
     //The upgradeable tokenizer
-    let tempSelfTokenizer = await SelfTokenizer.new();
-    this.selfTokenizerRegistry = await SelfTokenizerRegistry.new();
+    let tempMyToken = await MyToken.new();
+    this.selfTokenizerRegistry = await MyTokenRegistry.new();
 
-    await this.selfTokenizerRegistry.addVersion(1, tempSelfTokenizer.address);
+    await this.selfTokenizerRegistry.addVersion(1, tempMyToken.address);
     await this.selfTokenizerRegistry.createProxy(1, accounts[0]);
     let proxyAddress = await this.selfTokenizerRegistry.proxyAddress();
-    this.oldTokenzer = await SelfTokenizer.at(proxyAddress);
+    this.oldTokenzer = await MyToken.at(proxyAddress);
 
     //Or we can take it as an arg in contructor
     await this.oldTokenzer.updateVerificationListAddress(
@@ -73,15 +73,15 @@ contract("upgreadable scheme", function (accounts) {
     );
 
     //the second version
-    let tempNewSelfTokenizer = await NewSelfTokenizer.new();
+    let tempNewMyToken = await NewMyToken.new();
 
     await this.selfTokenizerRegistry.addVersion(
       2,
-      tempNewSelfTokenizer.address
+      tempNewMyToken.address
     );
     await this.selfTokenizerRegistry.upgradeTo(2);
     proxyAddress = await this.selfTokenizerRegistry.proxyAddress();
-    this.newTokenizer = await NewSelfTokenizer.at(proxyAddress);
+    this.newTokenizer = await NewMyToken.at(proxyAddress);
   });
   it("should retain its old storage", async function () {
     let response = await this.newTokenizer.getTokenAddress(client, 0);

@@ -60,7 +60,7 @@ contract("tokenize", function (accounts) {
     const status_T = await instance.getownerWhiteListStatus(user2);
 
     console.log(
-      "User whitelist (Tokenizer List) status pre addition: ",
+      "User whitelist (MyToken List) status pre addition: ",
       status
     );
 
@@ -75,7 +75,7 @@ contract("tokenize", function (accounts) {
     const status_T2 = await instance.getownerWhiteListStatus(user2);
 
     console.log(
-      "User whitelist (Tokenizer List) status post addition: ",
+      "User whitelist (MyToken List) status post addition: ",
       status2
     );
 
@@ -185,7 +185,7 @@ contract("tokenize", function (accounts) {
     console.log("Owner Address: ", x);
   });
 
-  it("Checking Transfer with Tokenizer List Only", async function () {
+  it("Checking Transfer with MyToken List Only", async function () {
     instance2 = await tokenize.new(
       tokenName,
       tokenSymbol,
@@ -202,7 +202,7 @@ contract("tokenize", function (accounts) {
     const status = await verificationList.isWhiteListed(user4);
 
     console.log(
-      "User whitelist (Tokenizer List) status pre addition: ",
+      "User whitelist (MyToken List) status pre addition: ",
       status
     );
 
@@ -214,7 +214,7 @@ contract("tokenize", function (accounts) {
     const status2 = await verificationList.getWhiteListStatus(user4);
 
     console.log(
-      "User whitelist (Tokenizer List) status post addition: ",
+      "User whitelist (MyToken List) status post addition: ",
       status2
     );
 

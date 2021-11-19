@@ -53,7 +53,7 @@ contract('tokenize', (accounts) => {
     const status_T = await instance.getownerWhiteListStatus(user2);
 
     console.log(
-      "User whitelist (Tokenizer List) status pre addition: ",
+      "User whitelist (MyToken List) status pre addition: ",
       status
     );
 
@@ -67,7 +67,7 @@ contract('tokenize', (accounts) => {
     const status_T2 = await instance.getownerWhiteListStatus(user2);
 
     console.log(
-      "User whitelist (Tokenizer List) status post addition: ",
+      "User whitelist (MyToken List) status post addition: ",
       status2
     );
 
@@ -113,7 +113,7 @@ contract('tokenize', (accounts) => {
       );
   });
 
-  it("Checking Transfer with Tokenizer List Only -- Negative Test", async function () {
+  it("Checking Transfer with MyToken List Only -- Negative Test", async function () {
     instance2 = await tokenize.new(
       tokenName,
       tokenSymbol,
@@ -130,7 +130,7 @@ contract('tokenize', (accounts) => {
     const status = await verificationList.isWhiteListed(user4);
 
     console.log(
-      "User whitelist (Tokenizer List) status : ",
+      "User whitelist (MyToken List) status : ",
       status
     );
 
@@ -185,7 +185,7 @@ contract('tokenize', (accounts) => {
     });
   });
 
-  describe('Adding From another user to Tokenizer White List -- Negative Test', function() {
+  describe('Adding From another user to MyToken White List -- Negative Test', function() {
     it('Fails when called by a non-admin account', async function () {
       await expectRevert(
         verificationList.addWhiteList({ from: user4 }),
